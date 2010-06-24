@@ -36,7 +36,7 @@ All Examplify! comments start with `/*#` (a fairly uncommon, but still perfectly
 
 ### Block
 
-`/*#block:["/pattern1/ig", "/pattern1/ig"]` - Blocks all lines containing the patterns in the entire document.
+`/*#block:["pattern1", "pattern2"]` - Blocks all lines containing the patterns in the entire document.
 
 
 ## License & Copyright
