@@ -176,7 +176,7 @@ class Examplify
 	}
 
 	/**
-	 * Method: _apply_skip_block()
+	 * Method: _apply_swap_block()
 	 * 	Handles the /*#swap-start:{} ... /*#swap-end rules.
 	 *
 	 * Access:
