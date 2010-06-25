@@ -28,9 +28,9 @@ All Examplify! comments start with `/*#` (a fairly uncommon, but still perfectly
 
 ### Swap
 
-`/*#swap:{"/pattern/ig" : "replacement"}*/` - Swap the PCRE pattern with the replacement in a given line. After `swap:`, you should have a valid, single-level JSON object.
+`/*#swap:{"pattern" : "replacement"}*/` - Swap the PCRE pattern with the replacement in a given line. After `swap:`, you should have a valid, single-level JSON object.
 
-`/*#swap-start:{"/pattern/ig" : "replacement"}*/` - Swap the PCRE pattern with the replacement in a given line, and continue swapping until you reach `/*#swap-end*/`. After `swap:`, you should have a valid, single-level JSON object.
+`/*#swap-start:{"pattern" : "replacement"}*/` - Swap the PCRE pattern with the replacement in a given line, and continue swapping until you reach `/*#swap-end*/`. After `swap:`, you should have a valid, single-level JSON object.
 
 `/*#swap-end*/` - See above.
 
