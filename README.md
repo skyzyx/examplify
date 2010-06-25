@@ -39,6 +39,17 @@ All Examplify! comments start with `/*#` (a fairly uncommon, but still perfectly
 `/*#block:["pattern1", "pattern2"]*/` - Blocks all lines containing the PCRE patterns in the entire document.
 
 
+## Usage
+
+	require_once 'examplify.class.php';
+
+	$file = file_get_contents('./_tests/sample.php');
+	$example = new Examplify($file);
+	echo $example->output();
+
+Sample input: [sample.php](http://github.com/skyzyx/examplify/blob/master/_tests/sample.php)
+
+
 ## License & Copyright
 
 This code is Copyright (c) 2010, Ryan Parman. However, I'm licensing this code for others to use under the [MIT license](http://www.opensource.org/licenses/mit-license.php).

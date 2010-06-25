@@ -4,7 +4,7 @@
  * 	Provides a simple, comment-based syntax for editing working code samples for public consumption.
  *
  * Version:
- * 	2010.06.23
+ * 	2010.06.24
  *
  * Copyright:
  * 	2010 Ryan Parman
@@ -121,7 +121,7 @@ class Examplify
 	 */
 	private function _apply_skip()
 	{
-		while (preg_match("/\n(.*)\/\*#skip\*\/(.*)\n/U", $this->content))
+		while (preg_match("/\/\*#skip\*\//U", $this->content))
 		{
 			$this->content = preg_replace("/\n(.*)\/\*#skip\*\/(.*)\n/U", "\n", $this->content);
 		}
@@ -139,7 +139,7 @@ class Examplify
 	 */
 	private function _apply_skip_block()
 	{
-		while (preg_match("/\n(.*)\/\*#skip-start\*\/(.|\n)*\/\*#skip-end\*\/\n/Um", $this->content))
+		while (preg_match("/\/\*#skip-start\*\/(.|\n)*\/\*#skip-end\*\//Um", $this->content))
 		{
 			$this->content = preg_replace("/\n(.*)\/\*#skip-start\*\/(.|\n)*\/\*#skip-end\*\/\n/Um", "\n", $this->content);
 		}
@@ -157,7 +157,22 @@ class Examplify
 	 */
 	private function _apply_swap()
 	{
+		preg_match_all("/\n(.*)\/\*#swap:(.*)\*\/(.*)\n/U", $this->content, $matches);
 
+		for ($i = 0, $max = count($matches[0]); $i < $max; $i++)
+		{
+			$replace = $matches[0][$i];
+			$line = $matches[1][$i];
+			$swaps = json_decode($matches[2][$i], true);
+
+			foreach ($swaps as $pattern => $replacement)
+			{
+				$line = preg_replace('/' . $pattern . '/', $replacement, $line);
+				$line = rtrim($line);
+			}
+
+			$this->content = str_replace($replace, "\n" . $line . "\n", $this->content);
+		}
 	}
 
 	/**
@@ -172,7 +187,30 @@ class Examplify
 	 */
 	private function _apply_swap_block()
 	{
+		preg_match_all("/\n(.*)\/\*#swap-start:(.*)\*\/(.|\n)*\/\*#swap-end\*\/(.*)\n/U", $this->content, $matches);
 
+		for ($i = 0, $max = count($matches[0]); $i < $max; $i++)
+		{
+			$block = $matches[0][$i];
+			$block = preg_replace("/\/\*#swap-start:(.*)\*\//", '', $block);
+			$block = preg_replace("/\/\*#swap-end\*\//", '', $block);
+
+			$replace = $matches[0][$i];
+			$swaps = json_decode($matches[2][$i], true);
+
+			foreach ($swaps as $pattern => $replacement)
+			{
+				$block = preg_replace('/' . $pattern . '/', $replacement, $block);
+
+				// Strip right-hand whitespace
+				$blocks = explode("\n", $block);
+				$cblock = array();
+				foreach ($blocks as $block) { $cblock[] = rtrim($block); }
+				$block = implode("\n", $cblock);
+			}
+
+			$this->content = str_replace($replace, "\n" . $block . "\n", $this->content);
+		}
 	}
 
 	/**
