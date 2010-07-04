@@ -98,13 +98,16 @@ class Examplify
 	private function _apply_block()
 	{
 		preg_match_all("/\/\*#block:(.*)\*\//U", $this->content, $matches);
-		$blocks = json_decode($matches[1][0], true);
+		$blocks = @json_decode($matches[1][0], true);
 
-		foreach ($blocks as $block)
+		if (count($blocks))
 		{
-			while (preg_match("/\n(.*)" . $block . "(.*)\n/", $this->content))
+			foreach ($blocks as $block)
 			{
-				$this->content = preg_replace("/\n(.*)" . $block . "(.*)\n/U", "\n", $this->content);
+				while (preg_match("/\n(.*)" . $block . "(.*)\n/", $this->content))
+				{
+					$this->content = preg_replace("/\n(.*)" . $block . "(.*)\n/U", "\n", $this->content);
+				}
 			}
 		}
 	}
@@ -159,19 +162,22 @@ class Examplify
 	{
 		preg_match_all("/\n(.*)\/\*#swap:(.*)\*\/(.*)\n/U", $this->content, $matches);
 
-		for ($i = 0, $max = count($matches[0]); $i < $max; $i++)
+		if (count($matches[0]))
 		{
-			$replace = $matches[0][$i];
-			$line = $matches[1][$i];
-			$swaps = json_decode($matches[2][$i], true);
-
-			foreach ($swaps as $pattern => $replacement)
+			for ($i = 0, $max = count($matches[0]); $i < $max; $i++)
 			{
-				$line = preg_replace('/' . $pattern . '/', $replacement, $line);
-				$line = rtrim($line);
-			}
+				$replace = $matches[0][$i];
+				$line = $matches[1][$i];
+				$swaps = json_decode($matches[2][$i], true);
 
-			$this->content = str_replace($replace, "\n" . $line . "\n", $this->content);
+				foreach ($swaps as $pattern => $replacement)
+				{
+					$line = preg_replace('/' . $pattern . '/i', $replacement, $line);
+					$line = rtrim($line);
+				}
+
+				$this->content = str_replace($replace, "\n" . $line . "\n", $this->content);
+			}
 		}
 	}
 
@@ -189,27 +195,30 @@ class Examplify
 	{
 		preg_match_all("/\n(.*)\/\*#swap-start:(.*)\*\/(.|\n)*\/\*#swap-end\*\/(.*)\n/U", $this->content, $matches);
 
-		for ($i = 0, $max = count($matches[0]); $i < $max; $i++)
+		if (count($matches[0]))
 		{
-			$block = $matches[0][$i];
-			$block = preg_replace("/\/\*#swap-start:(.*)\*\//", '', $block);
-			$block = preg_replace("/\/\*#swap-end\*\//", '', $block);
-
-			$replace = $matches[0][$i];
-			$swaps = json_decode($matches[2][$i], true);
-
-			foreach ($swaps as $pattern => $replacement)
+			for ($i = 0, $max = count($matches[0]); $i < $max; $i++)
 			{
-				$block = preg_replace('/' . $pattern . '/', $replacement, $block);
+				$block = $matches[0][$i];
+				$block = preg_replace("/\/\*#swap-start:(.*)\*\//", '', $block);
+				$block = preg_replace("/\/\*#swap-end\*\//", '', $block);
 
-				// Strip right-hand whitespace
-				$blocks = explode("\n", $block);
-				$cblock = array();
-				foreach ($blocks as $block) { $cblock[] = rtrim($block); }
-				$block = implode("\n", $cblock);
+				$replace = $matches[0][$i];
+				$swaps = json_decode($matches[2][$i], true);
+
+				foreach ($swaps as $pattern => $replacement)
+				{
+					$block = preg_replace('/' . $pattern . '/i', $replacement, $block);
+
+					// Strip right-hand whitespace
+					$blocks = explode("\n", $block);
+					$cblock = array();
+					foreach ($blocks as $block) { $cblock[] = rtrim($block); }
+					$block = implode("\n", $cblock);
+				}
+
+				$this->content = str_replace($replace, "\n" . $block . "\n", $this->content);
 			}
-
-			$this->content = str_replace($replace, "\n" . $block . "\n", $this->content);
 		}
 	}
 
