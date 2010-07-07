@@ -4,7 +4,7 @@
  * 	Provides a simple, comment-based syntax for editing working code samples for public consumption.
  *
  * Version:
- * 	2010.06.24
+ * 	2010.07.06
  *
  * Copyright:
  * 	2010 Ryan Parman
@@ -160,7 +160,7 @@ class Examplify
 	 */
 	private function _apply_swap()
 	{
-		preg_match_all("/\n(.*)\/\*#swap:(.*)\*\/(.*)\n/U", $this->content, $matches);
+		preg_match_all("/\n(.*)\/\*#swap:(.*)\*\/(.*)/U", $this->content, $matches);
 
 		if (count($matches[0]))
 		{
@@ -176,7 +176,7 @@ class Examplify
 					$line = rtrim($line);
 				}
 
-				$this->content = str_replace($replace, "\n" . $line . "\n", $this->content);
+				$this->content = str_replace($replace, "\n" . $line, $this->content);
 			}
 		}
 	}

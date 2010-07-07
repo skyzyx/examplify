@@ -16,6 +16,7 @@ Apply filters
 
 // Instantiate object
 $s3 = new AmazonS3();
+$rfc2616 = $s3->util->konst($s3->util, 'DATE_FORMAT_RFC2616');
 
 $version_id = (string) $s3->get_object('bucket', 'filename', array(
 	'versionId' => 'abc999',

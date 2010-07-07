@@ -4,7 +4,10 @@ require_once 'something_else.class.php';
 require_once 'something_third.class.php';
 
 // Instantiate object
-$s3 = new AmazonS3();
+$util = new CFUtilities(); /*#swap:{"util = new CFUtilities":"s3 = new AmazonS3"}*/
+$rfc2616 = $util->konst($util, 'DATE_FORMAT_RFC2616'); /*#swap:{"util":"s3->util"}*/
+$date = gmdate($rfc2616, 946684800); /*#skip*/
+$date = gmdate($rfc2616, 946684800); /*#skip*/
 
 $version_id = (string) $s3->get_object('bucket', 'filename', array(
 	'versionId' => 'abc123', /*#swap:{"\\d{3}": "999"}*/
