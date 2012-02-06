@@ -3,10 +3,10 @@ Apply filters
 
 --FILE--
 <?php
-	require_once '../examplify.class.php';
+	require_once dirname(__DIR__) . '/src/Examplify.php';
+	use Skyzyx\Components\Examplify;
 
-	$file = file_get_contents('sample.php');
-
+	$file = file_get_contents(__DIR__ . '/sample.php');
 	$example = new Examplify($file);
 	echo $example->output();
 ?>
