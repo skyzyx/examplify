@@ -1,0 +1,17 @@
+{
+	"name": "skyzyx/examplify",
+	"description": "Makes it easy to re-use your tests as usage examples by enabling you to annotate lines with specialized comments for skipping or swapping.",
+	"homepage": "http://github.com/skyzyx/examplify",
+	"license": "MIT",
+	"keywords": ["example", "test", "teach"],
+	"authors": [
+		{
+			"name": "Ryan Parman",
+			"homepage": "http://ryanparman.com"
+		}
+	],
+	"require": {
+		"php": ">=5.3"
+	},
+	"type": "library"
+}
