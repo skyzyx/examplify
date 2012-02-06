@@ -1,8 +1,6 @@
 # Examplify! Component
 
-The purpose of writing tests should be two-fold: (a) To test the source code, and (b) to provide instruction for how to use the source code.
-
-Tests written from an instructionary point-of-view are a great way to both teach and test, but sometimes there are bits of code that are necessary for testing, but aren't necessary for instruction.
+The purpose of writing tests should be two-fold: (a) To test the source code, and (b) to provide instruction for how to use the source code. Tests written from an instructionary point-of-view are a great way to both teach and test, but sometimes there are bits of code that are necessary for testing, but aren't necessary for instruction.
 
 Examplify! makes it easy to re-use your tests as usage examples by enabling you to annotate lines with specialized comments for skipping or swapping.
 
