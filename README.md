@@ -74,7 +74,7 @@ And include it in your scripts:
 	require_once '/path/to/examplify/src/Examplify.php';
 
 ### Install with Composer
-If you're using [Composer](https://github.com/composer/composer) to manage dependencies, you can add PHP with it.
+If you're using [Composer](https://github.com/composer/composer) to manage dependencies, you can add Examplify with it.
 
 	{
 		"require": {
