@@ -11,14 +11,14 @@
     <active>yes</active>
   </lead>
   <date>2012-02-08</date>
-  <time>09:02:02</time>
+  <time>09:05:01</time>
   <version>
     <release>1.1.0</release>
     <api>1.1.0</api>
   </version>
   <stability>
-    <release>release</release>
-    <api>release</api>
+    <release>stable</release>
+    <api>stable</api>
   </stability>
   <license>MIT</license>
   <notes>-</notes>
@@ -28,7 +28,6 @@
       <file name="tests/001.phpt" role="test" md5sum="71e57f9ca412320c04c212d345ca1ff8"/>
       <file name="tests/sample.php" role="test" md5sum="867116f95f88b28bebe44815ff45f079"/>
       <file name="src/Examplify.php" role="php" md5sum="cb34e89082873be24763c04a8b598529"/>
-      <file name="src/Examplify.php" role="php" md5sum="cb34e89082873be24763c04a8b598529"/>
     </dir>
   </contents>
   <dependencies>
@@ -36,6 +35,9 @@
       <php>
         <min>5.3</min>
       </php>
+      <pearinstaller>
+        <min>1.4.0</min>
+      </pearinstaller>
     </required>
   </dependencies>
   <phprelease>
@@ -43,7 +45,6 @@
       <install name="doc/.empty" as=".empty"/>
       <install name="tests/001.phpt" as="001.phpt"/>
       <install name="tests/sample.php" as="sample.php"/>
-      <install name="src/Examplify.php" as="Examplify.php"/>
       <install name="src/Examplify.php" as="Examplify.php"/>
     </filelist>
   </phprelease>
