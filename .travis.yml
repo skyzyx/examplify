@@ -1,5 +1,4 @@
 language: php
-script: "pear run-tests -r"
 php:
   - 5.2
   - 5.3
