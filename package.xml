@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<package xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" packagerversion="1.4.10" version="2.0" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0        http://pear.php.net/dtd/tasks-1.0.xsd        http://pear.php.net/dtd/package-2.0        http://pear.php.net/dtd/package-2.0.xsd">
+  <name>Examplify</name>
+  <channel>skyzyx.github.com</channel>
+  <summary>Makes it easy to re-use your tests as usage examples by enabling you to annotate lines with specialized comments for skipping or swapping.</summary>
+  <description>Makes it easy to re-use your tests as usage examples by enabling you to annotate lines with specialized comments for skipping or swapping.</description>
+  <lead>
+    <name>Ryan Parman</name>
+    <user/>
+    <email>ryan@ryanparman.com</email>
+    <active>yes</active>
+  </lead>
+  <date>2012-02-08</date>
+  <time>09:02:02</time>
+  <version>
+    <release>1.1.0</release>
+    <api>1.1.0</api>
+  </version>
+  <stability>
+    <release>release</release>
+    <api>release</api>
+  </stability>
+  <license>MIT</license>
+  <notes>-</notes>
+  <contents>
+    <dir name="/">
+      <file name="doc/.empty" role="doc" md5sum="d41d8cd98f00b204e9800998ecf8427e"/>
+      <file name="tests/001.phpt" role="test" md5sum="71e57f9ca412320c04c212d345ca1ff8"/>
+      <file name="tests/sample.php" role="test" md5sum="867116f95f88b28bebe44815ff45f079"/>
+      <file name="src/Examplify.php" role="php" md5sum="cb34e89082873be24763c04a8b598529"/>
+      <file name="src/Examplify.php" role="php" md5sum="cb34e89082873be24763c04a8b598529"/>
+    </dir>
+  </contents>
+  <dependencies>
+    <required>
+      <php>
+        <min>5.3</min>
+      </php>
+    </required>
+  </dependencies>
+  <phprelease>
+    <filelist>
+      <install name="doc/.empty" as=".empty"/>
+      <install name="tests/001.phpt" as="001.phpt"/>
+      <install name="tests/sample.php" as="sample.php"/>
+      <install name="src/Examplify.php" as="Examplify.php"/>
+      <install name="src/Examplify.php" as="Examplify.php"/>
+    </filelist>
+  </phprelease>
+</package>
